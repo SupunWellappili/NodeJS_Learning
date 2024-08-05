@@ -57,7 +57,7 @@ readFile(join(__dirname, "myName.txt"), 'utf-8', (err, data) => {
 /////////////File System///////////////////////////
 
 import { log } from "node:console";
-import { readFile } from "node:fs";
+import { appendFile, readFile, writeFile } from "node:fs";
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
 import { callbackify } from "node:util";
@@ -68,6 +68,9 @@ const __dirname = dirname(__filename);
 log(__filename);
 log(__dirname);
 
+/////////////read///////////////////////////
+
+/*
 readFile(
   join(__dirname, "read.txt"),
   {
@@ -79,3 +82,29 @@ readFile(
     }
   }
 );
+*/
+
+/////////////write///////////////////////////
+
+/*
+writeFile(
+  join(__dirname, "write.txt"),
+  "I'm wring writeFile of Nodejs",
+  {
+    encoding:'utf8'
+  },
+  (err) => {
+    if (err) {
+      log(err);
+    }
+  }
+);
+*/
+
+/////////////Append File///////////////////////////
+
+appendFile(join(__dirname, "write.txt"), " | I'm Create Append Files", (err) => {
+  if (!err) {
+    log("Create File");
+  }
+});
