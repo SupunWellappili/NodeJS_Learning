@@ -103,8 +103,19 @@ writeFile(
 
 /////////////Append File///////////////////////////
 
-appendFile(join(__dirname, "write.txt"), " | I'm Create Append Files", (err) => {
-  if (!err) {
-    log("Create File");
+appendFile(
+  join(__dirname, "write.js"),
+  `
+  const a = "supun";
+  const b = [12,44,67,4,100];
+
+  consle.log(a);
+  consle.log(b[4]);
+
+  `,
+  (err) => {
+    if (!err) {
+      log("Create File");
+    }
   }
-});
+);
