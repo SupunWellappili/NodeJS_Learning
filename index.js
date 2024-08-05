@@ -56,9 +56,11 @@ readFile(join(__dirname, "myName.txt"), 'utf-8', (err, data) => {
 
 /////////////File System///////////////////////////
 
-import { log } from 'node:console';
-import { dirname } from 'node:path';
-import {fileURLToPath} from 'node:url';
+import { log } from "node:console";
+import { readFile } from "node:fs";
+import { dirname, join } from "node:path";
+import { fileURLToPath } from "node:url";
+import { callbackify } from "node:util";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
@@ -66,4 +68,14 @@ const __dirname = dirname(__filename);
 log(__filename);
 log(__dirname);
 
-
+readFile(
+  join(__dirname, "read.txt"),
+  {
+    encoding: "utf-8",
+  },
+  (err, data) => {
+    if (!err) {
+      log(data);
+    }
+  }
+);
