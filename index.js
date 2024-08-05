@@ -31,16 +31,21 @@ console.log(path.basename(__dirname));
 console.log(path.extname(__filename));
 */
 
-
 /////////////File Handle///////////////////////////
 
-//import path from "node:os"; //all details import 
-import { dirname } from "node:path";
+//import path from "node:os"; //all details import
+import { dirname, join } from "node:path";
+import { readFile } from "node:fs";
 import { fileURLToPath } from "url";
+import { log } from "node:console";
 
 const __filename = fileURLToPath(import.meta.url);
-//const __dirname = path.__dirname(__filename);//all details import 
-const __dirname = dirname.__dirname(__filename);
+//const __dirname = path.__dirname(__filename);//all details import
+const __dirname = dirname(__filename);
 
-
-
+readFile(join(__dirname, "myName.txt"), (err, data) => {
+  if (err) {
+    console.log(err);
+  }
+  console.log(data);
+});
