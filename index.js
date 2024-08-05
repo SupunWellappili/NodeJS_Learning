@@ -33,6 +33,7 @@ console.log(path.extname(__filename));
 
 /////////////File Handle///////////////////////////
 
+/*
 //import path from "node:os"; //all details import
 import { dirname, join } from "node:path";
 import { readFile } from "node:fs";
@@ -51,3 +52,18 @@ readFile(join(__dirname, "myName.txt"), 'utf-8', (err, data) => {
   console.log(data);
 
 });
+*/
+
+/////////////File System///////////////////////////
+
+import { log } from 'node:console';
+import { dirname } from 'node:path';
+import {fileURLToPath} from 'node:url';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
+
+log(__filename);
+log(__dirname);
+
+
