@@ -57,7 +57,8 @@ readFile(join(__dirname, "myName.txt"), 'utf-8', (err, data) => {
 /////////////File System///////////////////////////
 
 import { log } from "node:console";
-import { appendFile, readFile, writeFile } from "node:fs";
+import { appendFile, readFile, rmSync, unlink, writeFile } from "node:fs";
+import { rm } from "node:fs/promises";
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
 import { callbackify } from "node:util";
@@ -65,8 +66,10 @@ import { callbackify } from "node:util";
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
+/*
 log(__filename);
 log(__dirname);
+*/
 
 /////////////read///////////////////////////
 
@@ -103,6 +106,7 @@ writeFile(
 
 /////////////Append File///////////////////////////
 
+/*
 appendFile(
   join(__dirname, "write.js"),
   `
@@ -119,3 +123,8 @@ appendFile(
     }
   }
 );
+*/
+
+/////////////File Remove///////////////////////////
+
+unlink(join(__dirname, "write.txt"), (err) => !err && log("File is Deleted"));
